@@ -62,13 +62,6 @@
             android:hint="Ingrese la cantidad"
             android:layout_marginBottom="16dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Calcular"
-            android:id="@+id/btnCalcular"
-            android:layout_gravity="center"/>
-
         <TextView
             android:id="@+id/tvError"
             android:layout_width="match_parent"
