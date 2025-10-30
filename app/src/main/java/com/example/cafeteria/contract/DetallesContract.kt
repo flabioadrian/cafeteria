@@ -13,7 +13,7 @@ class DetallesContract {
 
     interface Presenter {
         fun cargarDetallesCafe(idCafe: Int)
-        fun onBotonCalcularClick(cantidad: Int)
+        fun onCantidadCambiada(cantidad: Int)
     }
 
     interface Model {

@@ -3,7 +3,6 @@ package com.example.cafeteria.view
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -21,7 +20,6 @@ class DetallesActivity : AppCompatActivity(), DetallesContract.View {
     private lateinit var tvPrecio: TextView
     private lateinit var tvStock: TextView
     private lateinit var etCantidad: EditText
-    private lateinit var btnCalcular: Button
     private lateinit var tvTotal: TextView
     private lateinit var tvError: TextView
 
@@ -39,18 +37,18 @@ class DetallesActivity : AppCompatActivity(), DetallesContract.View {
         tvPrecio = findViewById(R.id.tvPrecio)
         tvStock = findViewById(R.id.tvStock)
         etCantidad = findViewById(R.id.etCantidad)
-        btnCalcular = findViewById(R.id.btnCalcular)
         tvTotal = findViewById(R.id.tvTotal)
         tvError = findViewById(R.id.tvError)
 
         // configurar eventos
-        btnCalcular.setOnClickListener {
-            val texto = etCantidad.text.toString()
-
-            val cantidad = texto.toIntOrNull() ?: 0
-
-            presenter.onBotonCalcularClick(cantidad)
-        }
+        etCantidad.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                val cantidad = s?.toString()?.toIntOrNull() ?: 0
+                presenter.onCantidadCambiada(cantidad)
+            }
+        })
 
 
         val idCafe = intent.getIntExtra("ID_CAFE", -1)

@@ -27,7 +27,7 @@ class DetallesPresenter(
         }
     }
 
-    override fun onBotonCalcularClick(cantidad: Int) {
+    override fun onCantidadCambiada(cantidad: Int) {
         val cafe = cafeActual
 
         if (cafe != null) {
